@@ -1,11 +1,13 @@
-from stats import get_book_character_count, get_book_report, get_book_text, get_book_word_count
+import sys
+from stats import get_book_report
 
 def main():
-    frankenstein = get_book_text("./books/frankenstein.txt")
-    character_dict = get_book_character_count(frankenstein)
+    cli_arguments = sys.argv
+    
+    if len(cli_arguments) != 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
 
-    #print(f"{get_book_word_count(frankenstein)} words found in the document")
-    #print()
-    print(get_book_report(character_dict))
+    get_book_report(cli_arguments[1])
 
 main()
